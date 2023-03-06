@@ -1,10 +1,13 @@
 package ewm.client;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 
 import ewm.ParamDto;
@@ -13,21 +16,41 @@ import ewm.StatDto;
 
 @Component
 public class StatClient {
-    final RestTemplate template;
+    final RestClient restClient;
     final String statUrl;
 
     public StatClient(RestTemplate template, @Value("${client.url}") String statUrl) {
-        this.template = template;
+//        this.template = template;
+        this.restClient = RestClient.builder()
+                .baseUrl(statUrl)
+                .build();
         this.statUrl = statUrl;
     }
 
     public void hit(ParamHitDto paramHitDto) {
-//        template
+        try {
+            restClient.post()
+                    .uri("/hit/{userId}");
+            return restClient.get()
+//                    .uri(UriComponentsBuilder.fromPath("/start")
+//                            .queryParam("uris", params.getUris())
+//                            .build())
+//                    .uri("/stats?start={start}&uris={uris}", pathParams)
+                    .uri(uriBuilder -> uriBuilder
+                            .queryParam("start", params.getStart())
+                            .build()
+                    )
+                    .retrieve()
+                    .body(new ParameterizedTypeReference<>() {
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 //
-public StatDto getStat(ParamDto paramDto) {
+public List<StatDto> getStat(ParamDto paramDto) {
 //        template
-    return new StatDto();
+    return Collections.emptyList();
 }
     public static void main(String[] args) {
 

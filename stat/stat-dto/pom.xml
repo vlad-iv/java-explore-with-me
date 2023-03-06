@@ -10,7 +10,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dto</artifactId>
+    <artifactId>stat-dto</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <dependencies>
         <dependency>

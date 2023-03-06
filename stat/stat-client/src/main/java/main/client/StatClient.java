@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import ewm.ParamDto;
+import ewm.ParamHitDto;
+import ewm.StatDto;
+
 @Component
 public class StatClient {
     final RestTemplate template;
@@ -17,14 +21,14 @@ public class StatClient {
         this.statUrl = statUrl;
     }
 
-    //    public void hit(ParamHitDto paramHitDto) {
+    public void hit(ParamHitDto paramHitDto) {
 //        template
-//    }
+    }
 //
-//    public StatDto getStat(ParamDto paramDto) {
+public StatDto getStat(ParamDto paramDto) {
 //        template
-//        return new StatDto();
-//    }
+    return new StatDto();
+}
     public static void main(String[] args) {
 
 //		String uri = "kjkj kjkf 8#$#$#$^ 65^%#@#$%";
