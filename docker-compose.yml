@@ -1,4 +1,3 @@
-version: '3.1'
 services:
   stats-server:
     build: stat/stat-server
@@ -11,7 +10,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=stat
 
   stats-db:
-    image: postgres:14-alpine
+    image: postgres:16.1
     container_name: postgres-ewm-stats-db
     ports:
       - "6542:5432"
@@ -30,4 +29,4 @@ services:
       - SPRING_DATASOURCE_PASSWORD=main
 #
 #  ewm-db:
-#    image: postgres:14-alpine
+#    image: postgres:16.1
