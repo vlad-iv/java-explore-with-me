@@ -10,13 +10,12 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>ru.practicum</groupId>
     <artifactId>stat</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>stat-dto</module>
+        <module>dto</module>
         <module>stat-server</module>
         <module>stat-client</module>
     </modules>
