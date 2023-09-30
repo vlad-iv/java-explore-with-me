@@ -35,9 +35,9 @@ public class StatClient {
 //
 //		String join = String.join(",", uris);
 //
-//		// stat/hit?uris=1,2,3 - не работает
+//		// stat/hit?uris=/events/1,/events/2,/events/3 - не работает
 //		Sting uris;
-//		// stat/hit?uris=1&uris=2&uris=3 - работает
+//		// stat/hit?uris=/events/1&uris=/events/2&uris=/events/3 - работает
         List<String> uris = new ArrayList<>();
 //		String url = "stat/hit?uris=" + uris; // Так не правильно
         // немного лучше
@@ -49,6 +49,12 @@ public class StatClient {
 
 
 //        GET /events/{eventId}
+// 1. получили данные от репозитория
+// 2. преобразовали в DTO + запросили из статистики просмотры
+
+// 3. записали в статистику +1
+
+
 //        GET /events
 
         // Основной сервис
