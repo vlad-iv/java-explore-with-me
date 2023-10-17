@@ -1,10 +1,12 @@
-package model;
+package main.model;
 
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -13,6 +15,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@NamedEntityGraph(
+		name = "user-with-category",
+		attributeNodes = {
+				@NamedAttributeNode("caterogy")
+		}
+)
 //@EqualsAndHashCode(of = "id")
 public class User {
 	Long id;

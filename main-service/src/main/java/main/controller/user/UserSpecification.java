@@ -1,4 +1,4 @@
-package controller.user;
+package main.controller.user;
 
 import java.util.HashMap;
 
@@ -9,7 +9,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import model.User;
+import main.model.User;
 
 public class UserSpecification implements Specification<User> {
 	public UserSpecification(UserParam param) {

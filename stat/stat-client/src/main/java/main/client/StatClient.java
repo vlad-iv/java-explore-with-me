@@ -1,4 +1,4 @@
-package ewm.client;
+package main.client;
 
 import java.util.ArrayList;
 import java.util.List;

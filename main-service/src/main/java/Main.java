@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import ewm.client.StatClient;
+import main.client.StatClient;
 
 public class Main {
 	/// user-category-event-request-compilation

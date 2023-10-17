@@ -1,11 +1,11 @@
-package controller.user;
+package main.controller.user;
 
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import model.User;
+import main.model.User;
 
 @Controller
 public class UserController {
