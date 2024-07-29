@@ -15,9 +15,9 @@ public class UserParam {
 
 	{
 		UserParam userParam = new UserParam();
-
+		StringBuilder sql = new StringBuilder();
 		if (userParam.isParam1()) {
-			"and param1 = :param1";
+			sql.append("and param1 = :param1");
 		}
 	}
 }

@@ -23,7 +23,7 @@ public class UserDao {
 
 	}
 
-	User getById(long id) {
+	User getById2(long id) {
 		return namedParameterJdbcOperations.query("select * from users where id = :id", Map.of("id", id), new RowMapper<User>());
 		// spring-data-jdbc
 

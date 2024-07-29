@@ -1,5 +1,6 @@
 package main.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @NamedEntityGraph(
 		name = "user-with-category",
 		attributeNodes = {
-				@NamedAttributeNode("caterogy")
+				@NamedAttributeNode("category")
 		}
 )
 //@EqualsAndHashCode(of = "id")
@@ -28,7 +29,7 @@ public class User {
 	String name;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	Caterogy caterogy;
+	Caterogy category;
 	@OneToMany(fetch = FetchType.LAZY)
 	List<Role> roles;
 
@@ -37,12 +38,12 @@ public class User {
 		if (this == o) return true;
 		if (!(o instanceof User)) return false;
 		User user = (User) o;
-		return id == user.id && Objects.equals(name, user.name) && Objects.equals(caterogy,
-				user.caterogy) && Objects.equals(roles, user.roles);
+		return id == user.id && Objects.equals(name, user.name) && Objects.equals(category,
+				user.category) && Objects.equals(roles, user.roles);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, caterogy, roles);
+		return Objects.hash(id, name, category, roles);
 	}
 }
