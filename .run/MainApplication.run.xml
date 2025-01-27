@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="MainApplication" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot" nameIsGenerated="true">
+        <option name="ACTIVE_PROFILES" value="test"/>
+        <module name="main-service"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="ewm.MainApplication"/>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>
