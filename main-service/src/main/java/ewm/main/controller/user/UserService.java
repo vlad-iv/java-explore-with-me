@@ -15,6 +15,8 @@ import ewm.main.model.User;
 @Service
 public class UserService {
 	UserRepository userRepository;
+	EventRepository eventRepository;
+	CategoryService categoryService;
 	UserMapper userMapper;
 
 	public List<UserDto> findBy(UserParam param) {
@@ -44,7 +46,7 @@ public class UserService {
 
 	@Transactional
 	public UserDto updateUser(UserDto userDto) {
-		User user = userRepository.findBy(userDto.getId()).orElseThrow();
+		User user = getUser(userDto);
 		user.setCategory(categoryRepository.findBy(userDto.CategoryId()).orElseThrow());
 //		userRepository.save(user); // Optional
 		userRepository.findBy(userDto.getId()).orElseThrow();
@@ -52,5 +54,10 @@ public class UserService {
 		User user = userMapper.toEntity(userDto);
 		userRepository.save(user); // Must
 		return userDto;
+	}
+
+	private User getUser(UserDto userDto) {
+		User user = userRepository.findBy(userDto.getId()).orElseThrow();
+		return user;
 	}
 }
