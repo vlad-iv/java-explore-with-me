@@ -1,2 +1,26 @@
-# java-explore-with-me
-Template repository for ExploreWithMe project.
+# комментарии к событиям
+
+* Основное
+  Comment
+
+CRUD
+
+POST /event/{eventId}/comment - Создание
+
+* Интеграция
+
+- Public - API
+- Private -
+- Admin
+
+* Логика
+
+
+* Дополнительное
+  Модерация
+
+Ответ на коммент
+
+Жалоба на коммент
+
+Фильтрация на слова 

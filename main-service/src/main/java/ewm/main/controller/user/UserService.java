@@ -19,6 +19,7 @@ public class UserService {
 	CategoryService categoryService;
 	UserMapper userMapper;
 
+	//	public List<UserDto> findBy(String param1, String param2, String param3, String param4, String param5, String param6) {
 	public List<UserDto> findBy(UserParam param) {
 		Specification<User> spec = new UserSpecification(param); // часть для where на java коде
 		Page<User> page = userRepository.findAll(spec, pageable);
