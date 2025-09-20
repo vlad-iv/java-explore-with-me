@@ -25,7 +25,7 @@ public class RestStatClient implements StatClient {
 	@Override
 	public void hit(ParamHitDto paramHitDto) {
 //        template
-		template.getForObject(statUrl, StatDto.class, paramHitDto);
+		result = template.getForObject(statUrl, StatDto.class, paramHitDto);
 		// 1. try catch обработать исключение + выбросить его же
 		// 2. try catch обработать исключение + обернуть в свое
 		// 3. try catch обработать исключение + заглушить

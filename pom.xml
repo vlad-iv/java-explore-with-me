@@ -27,13 +27,9 @@
         <module>main-service</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+
+    </dependencyManagement>
     <build>
         <pluginManagement>
             <plugins>
@@ -160,6 +156,16 @@
 		</pluginManagement>
 	</build>
 	<profiles>
+        <profile>
+            <id>local</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
 		<profile>
 			<id>check</id>
 			<build>
