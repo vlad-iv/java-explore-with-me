@@ -1,13 +1,10 @@
 package ewm.main.controller.user;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import ewm.main.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import ewm.main.model.User;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -16,11 +13,11 @@ public class UserController {
 
 	@GetMapping
 	List<User> findBy(String param1, String param2, String param3, String param4, String param5, String param6) {
-		return userService.findBy(param1, param2, param3, param4, param5, param6);
+//		return userService.findBy(param1, param2, param3, param4, param5, param6);
 		UserParam param = new UserParam(param1, param2, param3, param4, param5, param6);
-		Map<String, Object> params = new HashMap<>();
-		params.put("param1", param1);
-		// ..
+//		Map<String, Object> params = new HashMap<>();
+//		params.put("param1", param1);
+//		// ..
 		return userService.findBy(param);
 	}
 

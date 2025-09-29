@@ -1,8 +1,7 @@
 package ewm.main.controller.user;
 
-import org.springframework.data.domain.Pageable;
-
 import lombok.Data;
+import org.springframework.data.domain.Pageable;
 
 @Data
 public class UserParam {
@@ -10,6 +9,8 @@ public class UserParam {
 	String param2;
 	String param3;
 	String param4;
+    String param5;
+    String param6;
 	Pageable pageable;
 
 	boolean isParam1() {

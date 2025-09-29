@@ -1,15 +1,14 @@
 package ewm.client;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import ewm.ParamDto;
+import ewm.ParamHitDto;
+import ewm.StatDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import ewm.ParamDto;
-import ewm.ParamHitDto;
-import ewm.StatDto;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class RestStatClient implements StatClient {
@@ -25,7 +24,7 @@ public class RestStatClient implements StatClient {
 	@Override
 	public void hit(ParamHitDto paramHitDto) {
 //        template
-		template.getForObject(statUrl, StatDto.class, paramHitDto);
+        result = template.getForObject(statUrl, StatDto.class, paramHitDto);
 		// 1. try catch обработать исключение + выбросить его же
 		// 2. try catch обработать исключение + обернуть в свое
 		// 3. try catch обработать исключение + заглушить
