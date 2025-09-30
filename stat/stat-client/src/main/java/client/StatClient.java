@@ -1,11 +1,10 @@
-package ewm.client;
+package client;
 
 import ewm.ParamDto;
 import ewm.ParamHitDto;
 import ewm.StatDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -14,34 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
 
 @Component
-public class RestStatClient implements StatClient {
+public class StatClient {
     final RestTemplate template;
     final String statUrl;
 
-    public RestStatClient(RestTemplate template, @Value("${client.url}") String statUrl) {
+    public StatClient(RestTemplate template, @Value("${client.url}") String statUrl) {
         this.template = template;
         this.statUrl = statUrl;
     }
 
-
-    @Override
     public void hit(ParamHitDto paramHitDto) {
-        ResponseEntity<Void> exchange = template.exchange(statUrl + "/hit", POST, new HttpEntity<>(paramHitDto), new ParameterizedTypeReference<>() {
-        });
-
-        // 1. try catch обработать исключение + выбросить его же
-        // 2. try catch обработать исключение + обернуть в свое
-        // 3. try catch обработать исключение + заглушить
-        // 4. Ничего не делаем, поймает обработчик ошибок
+//        template
     }
 
     //
-    @Override
-    public StatDto getStat(ParamDto paramDto) {
-        ResponseEntity<StatDto> exchange = template.exchange(statUrl + "/stat", GET, null, new ParameterizedTypeReference<>() {
+    public List<StatDto> get(ParamDto paramDto) {
+        ResponseEntity<List<StatDto>> exchange = template.exchange(statUrl + "/stat", GET, null, new ParameterizedTypeReference<>() {
         });
 
 //        template
@@ -59,6 +48,16 @@ public class RestStatClient implements StatClient {
 //
 //		String join = String.join(",", uris);
 //
+//        events = [{id: 1, views:}, {id:10, views:}, {id:101, views:}]
+        // stat?uris=/events/1
+        // stat?uris=/events/10
+        // stat?uris=/events/101
+//3 запроса
+//         stat?uris=/events/1&uris=/events/10&uris=/events/101
+//1 запрос
+//            uris=["/events/1", "/events/10", "/events/101"];
+
+
 //		// stat/hit?uris=/events/1,/events/2,/events/3 - не работает
 //		Sting uris;
 //		// stat/hit?uris=/events/1&uris=/events/2&uris=/events/3 - работает

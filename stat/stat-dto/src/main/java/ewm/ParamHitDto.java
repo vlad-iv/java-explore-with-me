@@ -1,4 +1,4 @@
 package ewm;
 
-public class ParamHitDto {
+public record ParamHitDto(String uri) {
 }
