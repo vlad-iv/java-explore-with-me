@@ -14,7 +14,7 @@ public class CustomEventRepositoryImpl implements CustomEventRepository {
     }
 
     @Override
-    public List<Event> findByUserId(PublicEventParam param, Pageable pageable) {
+    public List<Event> findBy(PublicEventParam param, Pageable pageable) {
         BooleanExpression byCategory = QEvent.event.category.eq(param.category());
         List<Event> list = queryFactory.selectFrom(QEvent.event)
                 .where(byCategory)
