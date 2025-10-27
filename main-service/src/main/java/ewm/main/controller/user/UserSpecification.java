@@ -1,15 +1,13 @@
 package ewm.main.controller.user;
 
-import java.util.HashMap;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
+import ewm.main.model.User;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
-import ewm.main.model.User;
+import java.util.HashMap;
 
 public class UserSpecification implements Specification<User> {
 	public UserSpecification(UserParam param) {

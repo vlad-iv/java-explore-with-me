@@ -1,29 +1,31 @@
 package ewm.main.event;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-
+import ewm.ParamHitDto;
+import ewm.client.StatClient;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.AllArgsConstructor;
-import main.client.StatClient;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.List;
 
 @RestController
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PublicEventController {
-	private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-	final StatClient statClient;
-	EventService eventService;
+    final StatClient statClient;
+    final EventService eventService;
 
-	@GetMapping
-	List<EventDto> findBy(String name, String category, LocalDate start) {
-		PublicEventParam param = new PublicEventParam(name, category, start);
-		eventService.findBy(param);
-		statClient.hit();
-	}
+    @GetMapping
+    List<EventDto> findBy(String name, String category, LocalDate start) {
+        PublicEventParam param = new PublicEventParam(name, category, start);
+        eventService.findBy(param);
+        statClient.hit(new ParamHitDto());
+        return Collections.emptyList();
+    }
 
 
 }

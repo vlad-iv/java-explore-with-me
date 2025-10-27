@@ -1,16 +1,11 @@
 package ewm.main.model;
 
-import java.util.List;
-import java.util.Objects;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedAttributeNode;
-import jakarta.persistence.NamedEntityGraph;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -28,7 +23,7 @@ public class User {
 	String name;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	Caterogy category;
+	Category category;
 	@OneToMany(fetch = FetchType.LAZY)
 	List<Role> roles;
 

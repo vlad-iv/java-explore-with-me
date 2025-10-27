@@ -13,8 +13,11 @@
 	<groupId>ru.practicum</groupId>
 	<artifactId>main-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <properties>
+        <querydsl-jpa.version>5.1.0</querydsl-jpa.version>
+    </properties>
 
-	<dependencies>
+    <dependencies>
 		<dependency>
 			<groupId>ru.practicum</groupId>
 			<artifactId>stat-client</artifactId>
@@ -70,11 +73,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.querydsl</groupId>
-			<artifactId>querydsl-jpa</artifactId>
-			<version>${querydsl.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>${querydsl-jpa.version}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -83,7 +87,35 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <!-- Explicit opt-in required via annotationProcessors or
+                            annotationProcessorPaths on Java 22+, see https://bugs.openjdk.org/browse/JDK-8306819 -->
+                        <annotationProcessorPath>
+                            <groupId>com.querydsl</groupId>
+                            <artifactId>querydsl-apt</artifactId>
+                            <version>${querydsl-jpa.version}</version>
+                            <classifier>jakarta</classifier>
+                        </annotationProcessorPath>
+                        <annotationProcessorPath>
+                            <groupId>jakarta.persistence</groupId>
+                            <artifactId>jakarta.persistence-api</artifactId>
+                        </annotationProcessorPath>
+                        <annotationProcessorPath>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </annotationProcessorPath>
+                    </annotationProcessorPaths>
+
+                    <!-- Recommended: Some IDE's might require this configuration to include generated sources for IDE usage -->
+                    <generatedTestSourcesDirectory>target/generated-test-sources</generatedTestSourcesDirectory>
+                    <generatedSourcesDirectory>target/generated-sources</generatedSourcesDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 </project>
